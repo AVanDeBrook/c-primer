@@ -1,0 +1,2 @@
+# C Primer & Resources
+This repo contains introductory and reference material to the C programming language. Particularly as it relates to the CEC 320 course and CEC 322 lab (Microprocessor Systems) at Embry-Riddle Aeronautical University - Daytona Beach.
