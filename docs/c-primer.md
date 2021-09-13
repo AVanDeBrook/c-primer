@@ -1,5 +1,5 @@
 # CEC 320 & 322 -- C Programming Primer & Resources
-This document is a work in progress. If you find any typos or resources that you think would be a good addition to this document, open an issue [here](https://github.com/AVanDeBrook/c-primer/issues) or send me a message (via Email or Canvas).
+This document is a work in progress. If you find any typos or resources that you think would be a good addition to this document, open an issue [here](https://github.com/AVanDeBrook/c-primer/issues), [submit a pull-request](https://github.com/AVanDeBrook/c-primer/pulls) with your proposed changes, or send me a message (via Email or Canvas).
 
 ## Main Function
 Arguably the most important part of any C program is the main function. This is the entry point (aka reset vector) of your program. It generally takes one of the following two forms:
