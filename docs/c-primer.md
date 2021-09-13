@@ -1,33 +1,5 @@
 # CEC 320 & 322 -- C Programming Primer & Resources
 This document is a work in progress. If you find any typos or resources that you think would be a good addition to this document, open an issue [here](https://github.com/AVanDeBrook/c-primer/issues) or send me a message (via Email or Canvas).
-## Table of Contents
-* [Main Function](#main-function)
-* [Operators](#operators)
-  * [Resources](#operator-resources)
-* [Variables](#variables)
-  * [Examples](#variable-examples)
-  * [Resources](#variable-resources)
-* [Pointers](#pointers)
-  * [Pointer Arithmetic](#pointer-arithmetic)
-  * [Examples](#pointer-examples)
-  * [Resources](#pointer-resources)
-* [Conditionals](#conditionals)
-  * [If-Statements](#if-statements)
-  * [If-else Statements](#if-else-statements)
-  * [Cascading If-Statements](#cascading-if-statements)
-  * [Ternary Operators](#ternary-operator)
-  * [Switch Statements](#switch-statements)
-  * [Examples](#conditional-examples)
-  * [Resources](#conditional-resources)
-* [Loops](#loops)
-  * [While Loops](#while-loops)
-  * [Do-While Loops](#do-while-loops)
-  * [For Loops](#for-loops)
-  * [Examples](#loop-examples)
-* [Functions](#functions)
-  * [Function Prototypes](#function-prototypes)
-  * [Examples](#function-examples)
-  * [Resources](#function-resources)
 
 ## Main Function
 Arguably the most important part of any C program is the main function. This is the entry point (aka reset vector) of your program. It generally takes one of the following two forms:
