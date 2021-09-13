@@ -1,10 +1,12 @@
-# CEC 320 & 322 - C Programming Primer & Resources
+# CEC 320 & 322 -- C Programming Primer & Resources
 
 ## Table of Contents
 * [Variables](#variables)
   * [Examples](#variable-examples)
   * [Resources](#variable-resources)
 * [Pointers](#pointers)
+  * [Pointer Arithmetic](#pointer-arithmetic)
+  * [Examples](#pointer-examples)
 * [Conditionals](#conditionals)
   * [If-Statements](#if-statements)
   * [If-else Statements](#if-else-statements)
@@ -14,6 +16,13 @@
   * [Examples](#conditional-examples)
   * [Resources](#conditional-resources)
 * [Loops](#loops)
+  * [While Loops](#while-loops)
+  * [Do-While Loops](#do-while-loops)
+  * [For Loops](#for-loops)
+  * [Examples](#loop-examples)
+* [Functions](#functions)
+  * [Function Prototypes](#function-prototypes)
+  * [Function Examples](#function-examples)
 
 ## Variables
 General syntax:
@@ -65,7 +74,7 @@ char bar = 'a';
 // Likewise, you can set variables to binary and octal values using '0b' and '00', respectively
 uint32_t sum = 0x1234;
 uint64_t max_value = 0xFFFFFFFFFFFFFFFF;
-// Floating point variables can be set to either floating point values or whole values 
+// Floating point variables can be set to either floating point values or whole values
 // (these will both be interpreted the same way as 0.0)
 float average = 0.0;
 double moving_average = 0;
@@ -94,6 +103,96 @@ type '*' name ['=' value]';'
 Pointers are technically a subsection of variables, but due to their relative complexity and tendency to confuse people, I am including them in their own section.
 
 Simply put, a pointer is a specific type of variable that is used to store a memory address. When using the memory address stored in the pointer, it can be thought of as **referencing** that specific location in memory. Thus, when using the value in the memory location referenced by the pointer, it can be thought of a **dereferencing**.
+
+Each variable type has its corresponding pointer type (e.g. `int` has a corresponding `int *` type for pointers to `int`s). The importance of distinguishing between types of pointers will become evident when discussing pointer arithmetic and data structures such as arrays and strings.
+
+Pointers can be used to **reference** memory addresses by using the variable name. For example:
+```c
+int array[2] = {5, 10};
+// Declare a int pointer that points to the beginning of `array`
+int *ptr = array;
+
+// Print the memory addresses of each element in `array`
+for (int i = 0; i < 2; i++) {
+    // Print the memory address stored in `ptr`
+    printf("0x%p\n", ptr);
+    // Increment `ptr` to the next element in `array`
+    ptr++;
+}
+```
+
+The values within memory addresses stored in pointer variables can be accessed by **dereferencing** the pointer. For example:
+```c
+char str[] = "some string";
+// Declare char pointer that points to the beginning of the string
+char *ptr = str;
+
+printf("%c\n", *ptr);
+
+// Output:
+// s
+```
+
+## Pointer Arithmetic
+It is possible to perform arithmetic operations on pointers, however, the behavior is not immediately intuitive. This is best illustrated through example.
+
+The following arithmetic operation (on normal variables) results in the expected values.
+```c
+uint32_t foo = 0x20000000U;
+printf("foo = 0x%x\n", foo);
+
+foo += 1;
+printf("foo = 0x%x\n", foo);
+
+// Output:
+// foo = 0x20000000
+// foo = 0x20000001
+```
+
+However, the same operations done using pointers yields an entirely different result.
+```c
+uint32_t *foo = (uint32_t *)0x20000000U;
+printf("foo = 0x%p\n", foo);
+
+foo += 1;
+printf("foo = 0x%p\n", foo);
+
+// Output:
+// foo = 0x20000000
+// foo = 0x20000004
+```
+
+This is because pointer treat memory as blocks according to the size of the specific pointer, so when the pointer is incremented by 1, it will move to the next integer in memory (i.e. since `uint32_t`s take up 4 bytes in memory, when the pointer is incremented it will increase by 4 bytes at a time). This is consistent across variable types (e.g. `uint8_t`s take up 1 byte in memory and increment by 1 byte at a time, `uint16_t`s take up 2 bytes and increment 2 bytes at a time, etc.).
+
+## Pointer Examples
+Declaring and initializing a pointer:
+```c
+int array[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+
+// Declare an int pointer that points to the beginning of `array`
+int *array_ptr = array;
+
+// Employing pointer arithmetic to move the pointer to
+// reference the address of a specific value in the array
+while (*array_ptr++ != 9);
+```
+
+Employing pointers and pointer arithmetic to find the length of a string:
+```c
+char string[] = "some string";
+char *string_pointer = string;
+int count = 0;
+
+while (*string_pointer++)
+    count += 1;
+
+printf("string length = %d\n", count);
+printf("string length (from strlen) = %d\n", strlen(string));
+
+// Output:
+// string length = 11
+// string length (from strlen) = 11
+```
 
 ## Conditionals
 The syntax of conditionals will be broken up into several groups and described below. However, the one thing in common between them is the `condtion` that is tested to determine which code to execute.
@@ -128,7 +227,7 @@ Syntax of an if-else statement:
 ```
 'if' '(' condition ')' '{'
     ...
-'}' 'else' '{' 
+'}' 'else' '{'
     ...
 '}'
 ```
@@ -240,7 +339,7 @@ Cascading if-statement example:
 ```c
 int a = 10, b = 5;
 
-// Keep in mind that only one of these printf's will execute 
+// Keep in mind that only one of these printf's will execute
 // (the first condition that is found to be true)
 if (a < b) {
     printf("a=%d", a);
@@ -313,4 +412,150 @@ switch (value) {
 * [TutorialsPoint switch-statement reference](https://www.tutorialspoint.com/cprogramming/switch_statement_in_c.htm)
 
 ## Loops
+There are 3 types of loops in C. All operate similarly, but have specific use cases. All 3 have a boolean condition that is checked through each iteration of the loop to decide whether to keep looping or stop. This operates exactly the same as the `condition` described in the [conditionals section](#conditionals).
 
+## While Loops
+While loop syntax:
+```
+'while` '(' condtion ')' '{'
+    ...
+'}'
+```
+
+While loops will continue repeating the code within the curly braces (`{` and `}`) until the specified `condition` is `false`.
+
+## Do-While Loops
+Do-While loop syntax:
+```
+'do' '{'
+    ...
+'}' 'while' '(' condition ')' ';'
+```
+Do-while loops operate exactly the same as while loops with the only exception being that the code within the curly braces is guaranteed to execute at least once.
+
+## For Loops
+For loop syntax:
+```
+'for' '(' [start] ';' [stop] ';' [step] ')' '{'
+    ...
+'}'
+```
+For loops are for executing a set of instructions a specific number of times. You will most often see them used for stepping through strings and arrays.
+
+`start` is a variable with a specific starting value (usually `0`). This variable can be declared within the for-loop or before-hand.
+
+`stop` is a boolean condition that must be met in order for the loop to continue iterating.
+
+`step` is a specific action to perform to increment the variable in `start` (usually something along the lines of `i++`).
+
+Useful notes:
+* `start`, `stop`, and `step` are included in brackets (`[` and `]`) because they are not technically required in order for the loop to be valid
+## Loop Examples
+While loop example:
+```c
+int a = 0, b = 10;
+
+while (a < b) {
+    a += 1;
+}
+
+printf("a = %d, b = %d\n", a, b);
+
+// Output:
+// a = 9, b = 10
+```
+
+Do-while loop example:
+```c
+int a = 10, b = 10;
+
+do {
+    a += 1;
+} while (a < b);
+
+printf("a = %d, b = %d\n", a, b);
+
+// Output:
+// a = 11, b = 10
+```
+
+For loop example:
+```c
+int array[] = {2, 3, 5, 7, 11, 13};
+
+for (int i = 0; i < 6; i++) {
+    array[i] += i;
+    printf("array[%d] = %d\n", i, array[i]);
+}
+
+// Output:
+// array[0] = 2
+// array[1] = 4
+// array[2] = 7
+// array[3] = 10
+// array[4] = 15
+// array[5] = 18
+```
+
+## Functions
+Function syntax:
+```
+return-type name'(' parameters ')'
+'{'
+    ...
+'}'
+```
+
+`return-type` is the type of value that the function will return (similar to the way variables are declared; note that this can also be `void` or `void *`, see `malloc`).
+
+`name` is any valid name (see [variables](#variables)).
+
+`parameters` is a comma separated list of variable declarations. There is no upper limit on the number of parameters you can include in a function.
+
+A function can be called using its name and passing it the required parameters.
+```
+name '(' paramters ')' ';'
+```
+
+## Function Prototypes
+There are some instances where you will need to use or create function prototypes. You will normally use these in header files or cases where the functions are declared after `main`. Basically the compiler is seeing the function call before it is seeing its declaration (which will lead to implicit definition errors). To get around this, the function is declared before it is called and then defined later. That way the compiler has a knowledge of the functions existence and parameter/return type format.
+
+Prototypes are written exactly like function declarations (note that the function prototype and definition need to match exactly):
+```
+return-type name '(' parameters ')' ';'
+```
+
+See definitions above for `return-type`, `name`, and `parameters`.
+## Function Examples
+Function declaration:
+```c
+int string_length(char *str)
+{
+    int length = 0;
+
+    while (*str++)
+        length += 1;
+
+    return length;
+}
+
+void print_string(char *array, int length)
+{
+    for (int i = 0; i < length; i++)
+        printf("%d ", array[i]);
+}
+```
+
+Calling previously declared functions:
+```c
+char string[] = "abcd";
+
+int length = string_length(string);
+printf("length = %d\n", length);
+
+print_string(string, length);
+
+// Output:
+// length = 4
+// 97 98 99 100
+```
