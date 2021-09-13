@@ -1,13 +1,16 @@
 # CEC 320 & 322 -- C Programming Primer & Resources
-
+This document is a work in progress. If you find any typos or resources that you think would be a good addition to this document, open an issue [here](https://github.com/AVanDeBrook/c-primer/issues) or send me a message (via Email or Canvas).
 ## Table of Contents
 * [Main Function](#main-function)
+* [Operators](#operators)
+  * [Resources](#operator-resources)
 * [Variables](#variables)
   * [Examples](#variable-examples)
   * [Resources](#variable-resources)
 * [Pointers](#pointers)
   * [Pointer Arithmetic](#pointer-arithmetic)
   * [Examples](#pointer-examples)
+  * [Resources](#pointer-resources)
 * [Conditionals](#conditionals)
   * [If-Statements](#if-statements)
   * [If-else Statements](#if-else-statements)
@@ -23,7 +26,8 @@
   * [Examples](#loop-examples)
 * [Functions](#functions)
   * [Function Prototypes](#function-prototypes)
-  * [Function Examples](#function-examples)
+  * [Examples](#function-examples)
+  * [Resources](#function-resources)
 
 ## Main Function
 Arguably the most important part of any C program is the main function. This is the entry point (aka reset vector) of your program. It generally takes one of the following two forms:
@@ -58,6 +62,40 @@ int main(void)
 }
 ```
 
+## Operators
+There are many operators in C ranging from basic arithmetic to bitwise logic operators. Below is a list of the most common operators that you will see during this course:
+Arithmetic Operations:
+* `+` -- addition operator
+* `-` -- subtraction operator
+* `*` -- multiplication operator
+* `%` -- modulus operator (remainder after division)
+Logical Operations:
+* `&&` -- logical and
+* `||` -- logical or
+* `!` -- logical not
+Bitwise Operations:
+* `&` -- bitwise and
+* `|` -- bitwise or
+* `~` -- bitwise not
+* `^` -- bitwise xor
+Comparison Operations:
+* `>` -- greater than
+* `>=` -- greater than or equal to
+* `<` -- less than
+* `<=` -- less than or equal to
+* `==` -- equal to
+* `!=` -- not equal to
+Misc. Operators:
+* `*` -- dereference operator (to dereference and memory address to a value; when used in the context of a pointer)
+* `&` -- reference operator (to get the memory address of a variable; when used before a variable, with no whitespace between the ampersand and the variable name e.g. `&foo`)
+
+Make note of the following:
+* The difference between `=` (variable assignment) and `==` (value equivalency)
+* Some languages have both `==` and `===`, C only has `==`
+* There is a specific precedence level for each operator (see chart in [resources](#operator-resources))
+* The order of operations can be modified using parenthesis (just like mathematical operations)
+## Operator Resources
+* [Operator Precedence (from cppreference.com)](https://en.cppreference.com/w/c/language/operator_precedence)
 ## Variables
 General syntax:
 ```
@@ -228,6 +266,9 @@ printf("string length (from strlen) = %d\n", strlen(string));
 // string length (from strlen) = 11
 ```
 
+## Pointer Resources
+* [TutorialsPoint page on pointers](https://www.tutorialspoint.com/cprogramming/c_pointers.htm)
+* [Programiz Pointers Page -- Decent explanation w/ good supporting material and examples](https://www.programiz.com/c-programming/c-pointers)
 ## Conditionals
 The syntax of conditionals will be broken up into several groups and described below. However, the one thing in common between them is the `condtion` that is tested to determine which code to execute.
 
@@ -593,3 +634,6 @@ print_string(string, length);
 // length = 4
 // 97 98 99 100
 ```
+
+## Function Resources
+* [University of Utah -- More in-depth explanation of functions](https://www.cs.utah.edu/~germain/PPS/Topics/C_Language/c_functions.html)
