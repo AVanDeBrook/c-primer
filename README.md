@@ -1,6 +1,6 @@
 # C Primer & Resources
 ## Table of Contents
-* [Main Function](docs/c-primer.md#main-function)
+* [Main Function](docs/c-primer#main-function)
 * [Operators](docs/c-primer.md#operators)
   * [Resources](docs/c-primer.md#operator-resources)
 * [Variables](docs/c-primer.md#variables)
