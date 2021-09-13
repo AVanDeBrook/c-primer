@@ -1,6 +1,7 @@
 # CEC 320 & 322 -- C Programming Primer & Resources
 
 ## Table of Contents
+* [Main Function](#main-function)
 * [Variables](#variables)
   * [Examples](#variable-examples)
   * [Resources](#variable-resources)
@@ -24,6 +25,39 @@
   * [Function Prototypes](#function-prototypes)
   * [Function Examples](#function-examples)
 
+## Main Function
+Arguably the most important part of any C program is the main function. This is the entry point (aka reset vector) of your program. It generally takes one of the following two forms:
+```c
+int main(int argc, char *argv[])
+{
+    ...
+}
+```
+or
+```c
+int main(void)
+{
+    ...
+}
+```
+
+For this course you will see the latter form more often than not. The former form is meant for passing command line arguments to the program and this is simply not an option on microprocessors. Additionally, since microprocessors generally repeat a set of instructions constantly, there is usually no return from `main`. An infinite loop is used instead (or in the case of more sophisticated systems, this is where the task scheduler would be started). Programs will usually look something like this:
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <stdbool.h>
+
+int main(void)
+{
+    // some kind of initialization
+
+    while (1) {
+        // do something
+    }
+}
+```
+
 ## Variables
 General syntax:
 ```
@@ -41,7 +75,7 @@ type name ['=' value]';'
 
 Optionally, variables may be initialized to a specific `value` upon declaration. This is not required when declaring (creating) variables, however, you will often see variables initialized to 0 when they are declared (this is also a recommended habit just in case that variable takes up a spot in memory that previously had data in it).
 
-Typically in this course you will see the following data types (from `stdint.h`):
+Typically, in this course you will see the following data types (from `stdint.h`):
 * Unsigned numbers:
     * `uint64_t` - unsigned 64-bit integer
     * `uint32_t` - unsigned 32-bit integer
