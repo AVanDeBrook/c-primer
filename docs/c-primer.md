@@ -212,9 +212,9 @@ Here is a list of common conditional operators:
 |   `>=`|  greater than or equal to |
 |  `==` | equal to  |
 |   `!=` | not equal to  |
-| `!` | logical not (or negation operator)|
-| `&&` | logical and |
-| `||` | logical or|
+| `!` | Logical not (or negation operator)|
+| `&&` | Logical and |
+| <code>&#124;&#124;</code> | Logical or|
 
 **NOTE:** that in C there are no `true` or `false` values (unless included through `stdbool.h`), instead `0` can be considered to be `false` and anything greater than or equal to `1` can be considered `true`. However, the `true`/`false` convention will continue to be used throughout this document in order to maintain consistency and clarity.
 
