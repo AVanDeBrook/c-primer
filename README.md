@@ -48,7 +48,7 @@
 - [Preprocessor directives](docs/c-primer.md#preprocessor-directives)
   - [Macros:](docs/c-primer.md#macros)
   - [Conditional compilation:](docs/c-primer.md#conditional-compilation)
-    - [#if and docs/c-primer#endif](docs/c-primer.md#if-and-endif)
+    - [#if and #endif](docs/c-primer.md#if-and-endif)
     - [#if... #else... #endif](docs/c-primer.md#if-else-endif)
     - [#ifdef](docs/c-primer.md#ifdef)
     - [#ifndef](docs/c-primer.md#ifndef)
