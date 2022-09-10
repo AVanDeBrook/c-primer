@@ -199,7 +199,7 @@ bar = '\0';
 
 # Conditional and Logic Statements
 ## Conditionals
-The syntax of conditionals will be broken up into several groups and described below. However, the one thing in common between them is the `condtion` that is tested to determine which code to execute.
+The syntax of conditionals will be broken up into several groups and described below. However, the one thing in common between them is the `condition` that is tested to determine which code to execute.
 
 A `condition` is a boolean condition or result from comparisons (e.g. `a > b`, `b <= c`, etc.).
 
@@ -417,6 +417,85 @@ switch (value) {
 * [TutorialsPoint if-statement reference](https://www.tutorialspoint.com/cprogramming/if_statement_in_c.htm)
 * [TutorialsPoint switch-statement reference](https://www.tutorialspoint.com/cprogramming/switch_statement_in_c.htm)
 
+# Arrays
+Arrays are one of the simplest and most prevalent data structures in programming. Typically, they are contiguous blocks of memory made up of values of the same size and type, although this can vary by programming language.
+
+## Syntax and Declaration
+For the C programming language in particular, arrays are declared with a constant size and data type and the entire array is allocated within the same contiguous block of memory i.e. all values are located next to each other in memory. Arrays can be declared as follows:
+
+```
+<data-type> <name>[<size>];
+```
+
+* `<data-type>` is the data type of the individual elements in the array (identical to how variables are declared)
+* `<name>` is the name of the array/variable (also identical to the way variable names are defined)
+* `<size>` is the size of the array; it must take an integral value greater than 0 i.e. 1, 2, 3, ...
+
+# Accessing Values in the Array
+After the array has been declared, values can be accessed using either array or pointer notation. Array notation is the simplest and most transferable between programming languages, values in the array can be referenced by the array name and the position of the value in the array (also known as its index). For example:
+```c
+int array[5] = {2, 4, 6, 8, 10};
+
+printf("%d\n", array[1]);
+printf("%d\n", array[0]);
+// Output:
+// 4
+// 2
+
+array[0] = 12;
+printf("%d\n", array[1]);
+printf("%d\n", array[0]);
+// Output:
+// 4
+// 12
+```
+
+Similarly, pointer notation can be used to access values in an array (see the [pointers section](#pointers) for more information on pointers):
+```c
+int array[5] = {2, 4, 6, 8, 10};
+
+printf("%d\n", *(array + 1) );
+printf("%d\n", *(array + 0) );
+// Output:
+// 4
+// 2
+
+*array = 12;
+printf("%d\n", *(array + 1) );
+printf("%d\n", *(array + 0) );
+// Output:
+// 4
+// 12
+```
+
+## Array Examples
+Declaring an uninitialized array:
+```c
+int array[16];
+```
+
+Declaring an array with initial values:
+```c
+int array[4] = {1, 2, 3, 4};
+```
+
+Declaring an array and changing/reading values:
+```c
+int array[4] = {2, 3, 5, 7};
+
+printf("%d\n", array[2]);
+// Output:
+// 5
+
+array[2] = 10;
+printf("%d\n", array[2]);
+// Output:
+// 10
+```
+
+## Array Resources
+* [TutorialsPoint explanation of arrays in C with graphical examples](https://www.tutorialspoint.com/cprogramming/c_arrays.htm)
+
 # Loops
 There are 3 types of loops in C. All operate similarly, but have specific use cases. All 3 have a boolean condition that is checked through each iteration of the loop to decide whether to keep looping or stop. This operates exactly the same as the `condition` described in the [conditionals section](#conditionals).
 
@@ -540,7 +619,7 @@ int64_t math_mul(int a, int b);
 
 A function can be called using its name and passing it the required parameters.
 ```c
-function_name ( <paramters> );
+function_name ( <parameters> );
 ```
 
 **Function definition syntax:**
@@ -564,7 +643,7 @@ long long int math_mul(int a, int b){
 
 A function can be called using its name and passing it the required parameters.
 ```c
-function_name ( <paramters> ) ;
+function_name ( <parameters> ) ;
 ```
 See definitions above for `return_type`, `function_name`, and `parameters`.
 
@@ -639,7 +718,7 @@ struct carModel
     float carWeight;
 }
 ```
-### Declaring/Initializing a struct:
+### Declaring and Initializing a struct:
 
 #### Declaration
 ```c
@@ -757,11 +836,6 @@ CarModel_t BMW;
 Note the difference between logical operators and bitwise operators:
     - `&&` is a **logical AND** operator
     - `&` is a **bitwise AND** operator
-
-<!-- ### Binary logic operators (AND OR NOT XOR):
-- Work just like the logic gate equivalent:
-
-![ghrr4sq1](uploads/236bc3f96898ac4011c5418f68c7021b/ghrr4sq1.bmp) -->
 
 ### Bitwise AND:
 ```c
