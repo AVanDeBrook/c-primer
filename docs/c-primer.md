@@ -14,36 +14,36 @@ int main()
 - Every programmer's first step. Don't worry about the why. Just copy, paste and try running this code. If it works, then we're all set up and ready to go.
 
 # Basic Program Structure
-- C programs usally contain these 5 parts:
+- C programs usually contain these 5 parts:
   1. **Main()** - This is where we write all the code to be executed
   2. **Variables** - Labels to store data where we can access and or modify them later
   3. **Functions** - Pieces of code that execute a defined set of instructions
-  4. **Operations / assignments** - How we interact with variables and data 
+  4. **Operations / assignments** - How we interact with variables and data
   5. **Preprocessor directives** - Instructions that we pass to the compiler that let us add macros, change program flow, and manage external libraries/header files
 
 **Example Program:**
 
 ```c
-#include <stdio.h> 
- 
-/* print Fahrenheit-Celsius table 
-      for fahr = 0, 20, ..., 300 */ 
-int main() 
-{ 
-     int fahr, celsius; 
-     int lower, upper, step; 
- 
-     lower = 0;      /* lower limit of temperature scale */ 
-     upper = 300;    /* upper limit */ 
-     step = 20;      /* step size */ 
- 
-     fahr = lower; 
-     while (fahr <= upper) { 
-         celsius = 5 * (fahr-32) / 9; 
-         printf("%d\t%d\n", fahr, celsius); 
-         fahr = fahr + step; 
-	} 
-} 
+#include <stdio.h>
+
+/* print Fahrenheit-Celsius table
+      for fahr = 0, 20, ..., 300 */
+int main()
+{
+     int fahr, celsius;
+     int lower, upper, step;
+
+     lower = 0;      /* lower limit of temperature scale */
+     upper = 300;    /* upper limit */
+     step = 20;      /* step size */
+
+     fahr = lower;
+     while (fahr <= upper) {
+         celsius = 5 * (fahr-32) / 9;
+         printf("%d\t%d\n", fahr, celsius);
+         fahr = fahr + step;
+	}
+}
 ```
 
 ## Main Function
@@ -108,9 +108,9 @@ There are many operators in C ranging from basic arithmetic to bitwise logic ope
 * `!=` -- Not equal to
 
 **Misc. Operators:**
-* `*` -- Dereference operator 
+* `*` -- Dereference operator
   * To dereference and memory address to a value; when used in the context of a pointer
-* `&` -- Reference operator 
+* `&` -- Reference operator
   * To get the memory address of a variable; when used before a variable, with no whitespace between the ampersand and the variable name (e.g. `&foo`)
 
 Make note of the following:
@@ -124,7 +124,7 @@ Make note of the following:
 General syntax:
   ```
   <data_type> <var_name> = <value>; //Initialized with value
-  
+
   <data_type> <var_name>; //Not initialized
   ```
 
@@ -281,7 +281,7 @@ Make note of the following:
 
 ## Switch Statements
 - Switch statement is another decision making structure in C that can be used instead of several if else statements.
-  
+
 Switch statement syntax:
 ```c
 switch ( value_var ) {
@@ -423,7 +423,7 @@ There are 3 types of loops in C. All operate similarly, but have specific use ca
 ## While Loops
 While loop syntax:
 ```c
-while ( condtion ) {
+while ( condition ) {
     ...
 }
 ```
@@ -511,7 +511,7 @@ for (int i = 0; i < 6; i++) {
   </ol>
 
 ## Function Prototype
-- The function protype lets the compiler know about the return data type, argument list and their data types, and the order of arguments being passed to the function
+- The function prototype lets the compiler know about the return data type, argument list and their data types, and the order of arguments being passed to the function
 
 There are some instances where you will need to use or create function prototypes. You will normally use these in header files `(.h)` or cases where the functions are declared after `main`. Basically the compiler is seeing the function call before it is seeing its declaration (which will lead to implicit definition errors). To get around this, the function is declared before it is called and then defined later. That way the compiler has a knowledge of the functions existence and parameter/return type format.
 
@@ -520,7 +520,7 @@ Prototypes are written exactly like function declarations (note that the functio
 **Function prototype syntax:**
 
 ```c
-<return_type> <function_namae> (<parameters>); 
+<return_type> <function_name> (<parameters>);
 
  //Example:
 int64_t math_mul(int a, int b);
@@ -545,7 +545,7 @@ function_name ( <paramters> );
 
 **Function definition syntax:**
 ```c
-<return_type> <function_namae> (input parameters)
+<return_type> <function_name> (input parameters)
 {
     // Implementation/code of the function
 }
@@ -566,7 +566,7 @@ A function can be called using its name and passing it the required parameters.
 ```c
 function_name ( <paramters> ) ;
 ```
-See definitions above for `return_type`, `function_name`, and `parameters`. 
+See definitions above for `return_type`, `function_name`, and `parameters`.
 
 ## Function Examples
 
@@ -629,7 +629,7 @@ struct tag_name
 }
 ```
 
-Struct Example: 
+Struct Example:
 ```c
 struct carModel
 {
@@ -642,7 +642,7 @@ struct carModel
 ### Declaring/Initializing a struct:
 
 #### Declaration
-```c 
+```c
 struct structName Var_name;
 
 //Example:
@@ -654,7 +654,7 @@ struct carModel BMW;
 - At least 3 ways of handling initialization and assigning values to each struct element/variable
 
 1. C89 Method:
-```c 
+```c
 struct structName varName = {element1, element2, element3, ... elementN};
 
 //Example:
@@ -663,7 +663,7 @@ struct carModel BMW = {2021, 15000, 220, 1330};
 -  Similar to an array declaration
 - **The order is important**, it must match the order how the members were defined in the struct
 
-1. C99 Method: 
+1. C99 Method:
 ```c
 struct structName BMW = {.member1 = value, .member2 = value, .member3 = value};
 
@@ -697,8 +697,8 @@ BMW.carWeight;
 - **NOTE: Place structures inside header files (.h) or outside the main methods. It's not good practice to place inside the main methods.**
 
 # Typedef
-- The C programming language provides a keyword called 'typedef', which can be used to give a type a new name. These can be a lot more convenient and eaiser to use than structs when done properly. 
-  
+- The C programming language provides a keyword called 'typedef', which can be used to give a type a new name. These can be a lot more convenient and easier to use than structs when done properly.
+
 **Example:** Define a term 'BYTE' for one byte numbers:
 ```c
 typedef unsigned char BYTE
@@ -732,13 +732,13 @@ CarModel_t BMW;
 
 # Bitwise Operations
 
-- We use bitwise operations to perform binary operations on variables and data. Bitwise operators work on the data **bit by bit from the least significant bit (LSB) to the most significant bit (MSB)**. There are six bitwise operators in C that can be used for testing (`&`), setting (`|`), clearing (`~` and `&`), and toggling (`^`) of bits. The table and figures below shows list the operator, their function, and a usage example. 
+- We use bitwise operations to perform binary operations on variables and data. Bitwise operators work on the data **bit by bit from the least significant bit (LSB) to the most significant bit (MSB)**. There are six bitwise operators in C that can be used for testing (`&`), setting (`|`), clearing (`~` and `&`), and toggling (`^`) of bits. The table and figures below shows list the operator, their function, and a usage example.
 <br>
 
 - [Watch this for a brief summary on binary numbers](https://www.youtube.com/watch?v=sXxwr66Y79Y)
 
-<!-- - Bitwise operations perform binary operations on variables/data at the bit level. 
-- Bitwise operators can be used for: 
+<!-- - Bitwise operations perform binary operations on variables/data at the bit level.
+- Bitwise operators can be used for:
   - Testing of bits (`&`)
   - Setting of bits (` | `)
   - Clearing of bits (`~` and `&`)
@@ -758,9 +758,9 @@ Note the difference between logical operators and bitwise operators:
     - `&&` is a **logical AND** operator
     - `&` is a **bitwise AND** operator
 
-<!-- ### Binary logic operators (AND OR NOT XOR): 
+<!-- ### Binary logic operators (AND OR NOT XOR):
 - Work just like the logic gate equivalent:
-  
+
 ![ghrr4sq1](uploads/236bc3f96898ac4011c5418f68c7021b/ghrr4sq1.bmp) -->
 
 ### Bitwise AND:
@@ -776,9 +776,9 @@ int main()
     printf("What is the value of output: %d", output);
 
     /*  10 = 0000 1010   */
-    /*& 27 = 0001 1011   */ 
+    /*& 27 = 0001 1011   */
     //Expected output = 10 (0000 1010)
-    
+
     return 0;
 }
 ```
@@ -791,15 +791,15 @@ int main()
 int main()
 {
     int num1 = 15;
-    int num2 = 67; 
+    int num2 = 67;
     int output = (num1 | num2);
     printf("What is the value of num2: %d", output);
 
     /*  15 = 0000 1111   */
-    /*& 67 = 1000 0011   */  
+    /*& 67 = 1000 0011   */
     //Expected output = 79 (1000 1111)
     //If there is a 1 in the bit position between both numbers the output will be a 1
-    
+
     return 0;
 }
 ```
@@ -812,12 +812,12 @@ int main()
 int main()
 {
     int num1 = 15;
-    int num2 = 67; 
+    int num2 = 67;
     int output = (num1 ^ num2);
     printf("What is the value of output: %d", output);
 
     /*  15 = 0000 1111   */
-    /*& 67 = 1000 0011    */ 
+    /*& 67 = 1000 0011    */
     //Expected output = 76 (1000 1100)
     //If there is a 1 and a 0 in the same bit position between both numbers the output will be a 1 otherwise 0.
 
@@ -834,7 +834,7 @@ int main() {
     uint8_t num1 = 10;
     uint8_t output = (~num1);
     printf("What is the value of output: %d", output);
-    
+
     /*  10 = 0000 1010   */
     //Expected output = 245 (1111 0101)
     //Flip all the bits (1 --> 0, 0 --> 1)
@@ -842,7 +842,7 @@ int main() {
     return 0;
 }
 ```
-- **NOTE**: Typically a 1 in the MSB position means that the number is negative. An unsigned integer data type was used here to prevent the output of a negative number. If your application requires negative numbres, use a signed integer data type (`int`, `int16_t`, `int32_t`).
+- **NOTE**: Typically a 1 in the MSB position means that the number is negative. An unsigned integer data type was used here to prevent the output of a negative number. If your application requires negative numbers, use a signed integer data type (`int`, `int16_t`, `int32_t`).
 <br>
 - [Read this](https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html) for a better breakdown on negative numbers in binary
 
@@ -873,12 +873,12 @@ int main()
 }
 
 ```
-  
-### Right Shift: 
- - Operator takes 2 opperands
+
+### Right Shift:
+ - Operator takes 2 operands
  - Bits of the 1st operand will be shifted left by the amount decided by the 2nd operand
  - Syntax: ```operand1 >> operand2```
-  
+
 ```c
 #include <stdint.h>
 #include <stdio.h>
@@ -1012,27 +1012,27 @@ printf("string length (from strlen) = %d\n", strlen(string));
 
 # Preprocessor directives
 - In C programming, pre-processor directives are used to affect compiler settings, create macros, and manage external external and standard libraries.
-  
+
 - **Pre-processor directives begin with '#' symbol**
 
 
 | Type    | Syntax of pre-processor directive |
 | ----------- | ------ |
-| Macros         | `#define <identfier> <value>` <br>Used for textual replacement|
-| File inclusion          | `#include <std_lib_file_name>` or `#include "user_defined file_name"` <br>Used for file unclusion |
+| Macros         | `#define <identifier> <value>` <br>Used for textual replacement|
+| File inclusion          | `#include <std_lib_file_name>` or `#include "user_defined file_name"` <br>Used for file inclusion |
 | Conditional compilation | `#ifdef, #endif, #if, #else, #ifndef, #undef` <br> Used to direct the compiler about code compilation      |
 | Others         | `#error, #pragma`      |
 
 ## Macros:
 - Macros are used for textual replacement in the code, commonly used to define constants
-  
+
 ```c
 #define <identifier> <value>
 #define MAX_RECORD 10
 ```
 <!-- - Write macros in all uppercase letters -->
-  
-- We can also make [function-like macros](https://gcc.gnu.org/onlinedocs/cpp/Function-like-Macros.html) that execute small snippets of code  
+
+- We can also make [function-like macros](https://gcc.gnu.org/onlinedocs/cpp/Function-like-Macros.html) that execute small snippets of code
 
  **Best Practices while writing macros in C:**
 1. Use meaningful macro names
@@ -1048,7 +1048,7 @@ printf("string length (from strlen) = %d\n", strlen(string));
 //Code block
 #endif
 
-#if 0 
+#if 0
 //code block
 #endif
 ```
@@ -1080,12 +1080,12 @@ printf("string length (from strlen) = %d\n", strlen(string));
 //Code block
 #endif
 ```
-- ``` #ifndef``` directive checks whether the identifier is defined or not within the progam. If the identifier is not defined then the code block will be included for compilation
+- ``` #ifndef``` directive checks whether the identifier is defined or not within the program. If the identifier is not defined then the code block will be included for compilation
 
 # Header Files
 
-> A header file is a file with extension **.h** which contains C function declarations and macro 
-> definitions to be shared between several source files. There are two ypes of header files: 
+> A header file is a file with extension **.h** which contains C function declarations and macro
+> definitions to be shared between several source files. There are two types of header files:
 > the files that the programmer writes and the files that comes with your compiler.
 > `-` [www.tutorialspoint.com](https://www.tutorialspoint.com/cprogramming/c_header_files.htm)
 
@@ -1095,7 +1095,7 @@ printf("string length (from strlen) = %d\n", strlen(string));
 | ``` <stdio.h> ```  | Input/output  |
 | ```<stdlib.h>```  | General utilities, memory management, algorithms  |
 | ```<stdint.h>```  | Fixed-width integer types, alias data types  |
-| ```<time.h>```  | Time/date utilites  |
+| ```<time.h>```  | Time/date utilities  |
 | ```<math.H>```  | Common mathematics functions  |
 | ```<string.h>```  | String handling |
 
@@ -1120,19 +1120,19 @@ int main()
 
 <!-- ### User-defined header files
 
-  
+
 ### Example header file:
 
 
 
 ```c
 /** @file stm32f407xx_base_driver.h
- * 
+ *
  * @brief Header file for stm32f4xx boards containing peripheral register locations
  * and functions to enable peripheral clocks
  *
  * @par
- * 
+ *
  *  Created on: Feb 18, 2021
  *      Author: milesosborne
  */
