@@ -17,7 +17,7 @@
   - [Switch Statements](docs/c-primer.md#switch-statements)
   - [Conditional Examples](docs/c-primer.md#conditional-examples)
   - [Conditional Resources](docs/c-primer.md#conditional-resources)
-- [Arrays](docs/c-primer.md#)
+- [Arrays](docs/c-primer.md#arrays)
   - [Syntax and Declaration](docs/c-primer.md#syntax-and-declaration)
   - [Accessing Values in the Array](docs/c-primer.md#accessing-values-in-the-array)
   - [Array Examples](docs/c-primer.md#array-examples)
